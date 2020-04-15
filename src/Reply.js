@@ -1,9 +1,6 @@
 import React from 'react'
 
 class Reply extends React.Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         //alert(this.props.content.toString());
         if(this.props.type==='text'){
@@ -15,13 +12,38 @@ class Reply extends React.Component{
         }
     }
 }
+class QRButtonArea extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={clicked:false};
+    }
+    changeClicked=()=>{
+        this.setState({clicked: !this.state.clicked});
+    }
+    render(){
+        const buttonItems=this.props.buttons.map((button)=>(<QRButton title={button.title} value={button.value} 
+            change={this.changeClicked}/>));
+        return this.state.clicked? null:<span>{buttonItems}</span>;
+    }
+}
+class QRButton extends React.Component{
+    render(){
+        return <button onClick={()=>this.handleClick()}>{this.props.title}</button>
+    }
+    handleClick(){
+        alert(this.props.value);
+        this.props.change();
+    }
+}
 function Text(props) {
     return <p>{props.content}</p>;
 }
 function QuickReply(props) {
     //const content=props.content;
     //alert(props.content);
-    return <p>{props.content}<br/><button>{props.buttons.title}</button></p>
+    const buttons=props.buttons;
+    //const buttonItems=buttons.map((button)=>(<QRButton title={button.title} value={button.value}/>));
+    return <p>{props.content}<br/><QRButtonArea buttons={buttons}/></p>
     //<br/><button>{props.content.buttons.title}</button>
 }
 

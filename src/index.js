@@ -42,7 +42,10 @@ ReactDOM.render(<ToggleButton/>, document.getElementById('click_div'));
 
 //const reply={type:'text', content:'explore knowledge sources'}//pass
 //const reply={type:'QuickReply', content:'explore knowledge sources', buttons:{title:'Yes', value:'Yes'}}
-const reply={type:'QuickReply', content:{content:'explore knowledge sources', buttons:{title:'Yes',value:'Yes'}}};
+const reply={
+  type:'QuickReply', 
+  content:{content:'explore knowledge sources', buttons:[{title:'Yes',value:'Yes'},{title:'No',value:'No'}]}
+};
 ReactDOM.render(<Reply type={reply.type} content={reply.content}/>, document.getElementById('conditional_render_div'));
 
 // If you want your app to work offline and load faster, you can change
