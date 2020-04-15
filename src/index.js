@@ -5,6 +5,7 @@ import MyMsg from './MyMsg';
 import Clock from './Clock';
 import ToggleButton from './ToggleButton';
 import Reply from './Reply';
+import NameForm from './Forms';
 //import App from './App';
 //import * as serviceWorker from './serviceWorker';
 
@@ -47,6 +48,8 @@ const reply={
   content:{content:'explore knowledge sources', buttons:[{title:'Yes',value:'Yes'},{title:'No',value:'No'}]}
 };
 ReactDOM.render(<Reply type={reply.type} content={reply.content}/>, document.getElementById('conditional_render_div'));
+
+ReactDOM.render(<NameForm/>, document.getElementById('nameform_div'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
