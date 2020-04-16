@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import MyMsg from './MyMsg';
@@ -53,6 +53,25 @@ ReactDOM.render(<Reply type={reply.type} content={reply.content}/>, document.get
 ReactDOM.render(<NameForm/>, document.getElementById('nameform_div'));
 
 ReactDOM.render(<Calculator/>, document.getElementById('calculator'));
+
+class Test extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={show:false};
+  }
+  handleClick(){
+    //alert(this.state.show);
+    this.setState(()=>({show:!this.state.show}));
+  }
+  render(){
+    return <Fragment><button onClick={()=>this.handleClick()}>click</button>
+    {this.state.show &&(
+      <p>Hello world!</p>
+    )
+    }</Fragment>
+  }
+}
+ReactDOM.render(<Test/>,document.getElementById('test1'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

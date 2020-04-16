@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 
 class TemperatureInput extends React.Component{
     // constructor(props){
@@ -33,12 +33,12 @@ class Calculator extends React.Component{
         const temperature=this.state.temperature;
         const celsius=scale==='f'? tryConvert(temperature, toCelsius): temperature;
         const fahrenheit=scale==='c'? tryConvert(temperature, toFahrenheit): temperature;
-        return <div>
+        return <Fragment>
             <TemperatureInput scale='c' temperature={celsius}
             onTemperatureChange={(temperature)=>this.handleCelsiusChange(temperature)}/>
             <TemperatureInput scale='f' temperature={fahrenheit}
             onTemperatureChange={(temperature)=>this.handleFahrenheitChange(temperature)}/>
-        </div>
+        </Fragment>
     }
 }
 function tryConvert(temperature, convert){
